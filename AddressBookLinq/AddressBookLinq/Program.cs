@@ -9,6 +9,7 @@ namespace AddressBook_LINQ
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Address Book Using LINQ");
+            AddressBook addressbook = new AddressBook();
         }
     }
 }
