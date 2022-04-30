@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using AddressBookLinq;
 
-namespace AddressBook_LINQ
+namespace AddressBookLinq
 {
     class AddressBook
     {
@@ -44,6 +43,26 @@ namespace AddressBook_LINQ
                 Console.WriteLine("PhoneNumber:-" + contact.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + contact.Field<string>("Email"));
                 Console.WriteLine();
+            }
+        }
+        public void EditContact()
+        {
+            var contacts = dataTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Aniket");
+            int count = contacts.Count();
+            if (count > 0)
+            {
+                foreach (var contact in contacts)
+                {
+                    contact.SetField("LastName", "Surushe");
+                    contact.SetField("City", "Surat");
+                    contact.SetField("State", "Gujrat");
+                    contact.SetField("Zip", 23212);
+                }
+                Console.WriteLine("Contact is Changed Successfully");
+            }
+            else
+            {
+                Console.WriteLine("Contact Does not Found!");                
             }
         }
     }

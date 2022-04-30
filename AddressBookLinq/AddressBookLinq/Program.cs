@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-namespace AddressBook_LINQ
+namespace AddressBookLinq
 {
     class Program
     {
@@ -15,6 +15,7 @@ namespace AddressBook_LINQ
             {
                 Console.WriteLine("1: For Add the Contact");
                 Console.WriteLine("2: For Display Contact");
+                Console.WriteLine("3: For Edit the Contact");
                 Console.WriteLine("0: For Exist");
                 option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -24,6 +25,9 @@ namespace AddressBook_LINQ
                         break;
                     case 2:
                         addressbook.DisplayContacts();
+                        break;
+                    case 3:
+                        addressbook.EditContact();
                         break;
                     case 0:
                         Console.WriteLine("Exit");
