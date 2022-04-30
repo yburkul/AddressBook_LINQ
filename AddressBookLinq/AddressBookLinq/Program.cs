@@ -19,6 +19,7 @@ namespace AddressBookLinq
                 Console.WriteLine("4: For Delete The Contact");
                 Console.WriteLine("5: For Get Details by using City and State");
                 Console.WriteLine("6: For count contacts by using City");
+                Console.WriteLine("7: For Sort the contact by using First Name");
                 Console.WriteLine("0: For Exist");
                 option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -40,6 +41,9 @@ namespace AddressBookLinq
                         break;
                     case 6:
                         addressbook.CountContactByUsingCity();
+                        break;
+                    case 7:
+                        addressbook.SortContactsByFirstName();
                         break;
                     case 0:
                         Console.WriteLine("Exit");

@@ -111,5 +111,26 @@ namespace AddressBookLinq
             var contacts = dataTable.Rows.Cast<DataRow>().GroupBy(x => x["City"].Equals("pune")).Count();
             Console.WriteLine("Size : {0} ", contacts);
         }
+        public void SortContactsByFirstName()
+        {
+            var contacts = dataTable.Rows.Cast<DataRow>().OrderBy(x => x.Field<string>("FirstName"));
+            int count = contacts.Count();
+            if (count > 0)
+            {
+                foreach (var contact in contacts)
+                {
+                    Console.WriteLine("First Name:-" + contact.Field<string>("FirstName"));
+                    Console.WriteLine("LastName:-" + contact.Field<string>("LastName"));
+                    Console.WriteLine("Address:-" + contact.Field<string>("Address"));
+                    Console.WriteLine("City:-" + contact.Field<string>("City"));
+                    Console.WriteLine("State:-" + contact.Field<string>("State"));
+                    Console.WriteLine("ZipCode:-" + contact.Field<int>("Zip"));
+                    Console.WriteLine("PhoneNumber:-" + contact.Field<long>("PhoneNumber"));
+                    Console.WriteLine("Email:-" + contact.Field<string>("Email"));
+                    Console.WriteLine();
+                }
+            }
+
+        }
     }
 }
