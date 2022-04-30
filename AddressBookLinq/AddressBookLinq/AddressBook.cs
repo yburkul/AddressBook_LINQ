@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using AddressBookLinq;
 
 namespace AddressBook_LINQ
 {
@@ -9,25 +10,8 @@ namespace AddressBook_LINQ
     {
         DataTable dataTable = new DataTable();
         
-        public DataTable CreateAddressBookDataTable()
+        public AddressBook()
         {
-            Console.Write("Enter the First Name: ");
-            string FirstName = Console.ReadLine();
-            Console.Write("Enter the Last Name: ");
-            string LastName = Console.ReadLine();
-            Console.Write("Enter the Address: ");
-            string Address = Console.ReadLine();
-            Console.Write("Enter the City: ");
-            string City = Console.ReadLine();
-            Console.Write("Enter the State: ");
-            string State = Console.ReadLine();
-            Console.Write("Enter the Zip code: ");
-            int Zip = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the Phone Number: ");
-            long PhoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.Write("Enter the Email id: ");
-            string Email = Console.ReadLine();
-
             dataTable.Columns.Add("FirstName", typeof(string));
             dataTable.Columns.Add("LastName", typeof(string));
             dataTable.Columns.Add("Address", typeof(string));
@@ -35,18 +19,30 @@ namespace AddressBook_LINQ
             dataTable.Columns.Add("State", typeof(string));
             dataTable.Columns.Add("Zip", typeof(int));
             dataTable.Columns.Add("PhoneNumber", typeof(long));
-            dataTable.Columns.Add("Email", typeof(string));
-            dataTable.Rows.Add(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
-            return dataTable;
+            dataTable.Columns.Add("Email", typeof(string));            
         }
-        public void DisplayContacts(DataTable addresstable)
+        public void AddContact()
         {
-            var contacts = addresstable.Rows.Cast<DataRow>();
-
-            foreach (var contact in contacts)
+            dataTable.Rows.Add("Yogesh", "Burkul", "Asola", "Buldana", "Gujrat", 38117, 9017658987, "yogesh@gmail.com");
+            dataTable.Rows.Add("Atish", "Patil", "Akola", "Nagpur", "Maharshtra", 84113, 8015870002, "atish123@gmail.com");
+            dataTable.Rows.Add("Nikita", "Pawar", "Jalna", "Beed", "Telangana", 88352, 2699626511, "nikitapawar@gmail.com");
+            dataTable.Rows.Add("Ganesh", "Shelke", "Chikhali", "Pune", "Maharshtra", 49546, 6165758233, "ganesh987@gmail.com");
+            dataTable.Rows.Add("Aniket", "Mante", "Javli", "Mumbai", "Maharshtra", 46214, 3174103617, "aniket678@gmail.com");
+            Console.WriteLine("Contact is Added in Address Book ");
+            
+        }
+        public void DisplayContacts()
+        {
+            foreach (var contact in dataTable.AsEnumerable())
             {
-                Console.WriteLine("First Name : " + contact.Field<string>("FirstName") + " - " + "Last Name : " + contact.Field<string>("LastName") + " - " + "Address : " + contact.Field<string>("Address") + " - " + "City : " + contact.Field<string>("City") + " - " + "State : " + contact.Field<string>("State")
-                    + " - " + "Zip : " + contact.Field<int>("Zip") + " - " + "Phone Number : " + contact.Field<long>("PhoneNumber") + " - " + "Email : " + contact.Field<string>("Email") + " ");
+                Console.WriteLine("First Name:" + contact.Field<string>("FirstName"));
+                Console.WriteLine("LastName:-" + contact.Field<string>("LastName"));
+                Console.WriteLine("Address:-" + contact.Field<string>("Address"));
+                Console.WriteLine("City:-" + contact.Field<string>("City"));
+                Console.WriteLine("State:-" + contact.Field<string>("State"));
+                Console.WriteLine("ZipCode:-" + contact.Field<int>("Zip"));
+                Console.WriteLine("PhoneNumber:-" + contact.Field<long>("PhoneNumber"));
+                Console.WriteLine("Email:-" + contact.Field<string>("Email"));
                 Console.WriteLine();
             }
         }

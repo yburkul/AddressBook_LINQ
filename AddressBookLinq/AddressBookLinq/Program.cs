@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBookLinq;
+using System;
 using System.Data;
 
 namespace AddressBook_LINQ
@@ -13,13 +14,23 @@ namespace AddressBook_LINQ
             do
             {
                 Console.WriteLine("1: For Add the Contact");
+                Console.WriteLine("2: For Display Contact");
+                Console.WriteLine("0: For Exist");
                 option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
-                        DataTable data = addressbook.CreateAddressBookDataTable();
-                        addressbook.DisplayContacts(data);
+                        addressbook.AddContact();                        
                         break;
+                    case 2:
+                        addressbook.DisplayContacts();
+                        break;
+                    case 0:
+                        Console.WriteLine("Exit");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input Please Choose Correct Option");
+                        break ;
                 }
             }
             while (option != 0);
